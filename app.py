@@ -16,11 +16,7 @@ def home():
 def voc():
 
     if not os.path.exists(CACHE_FILE):
-        return jsonify({
-            "error": "cache not generated yet"
-        })
+        return jsonify({"error": "cache not found"}), 404
 
     with open(CACHE_FILE, "r") as f:
-        data = json.load(f)
-
-    return jsonify(data)
+        return jsonify(json.load(f))
